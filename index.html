@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Web Price Intelligence dashboard">
+<title>PriceLens — Web Price Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">P</div><div><strong>PriceLens</strong><span>Intelligence</span></div></div>
+  <nav>
+    <a class="nav-item active" href="#"><span>⌂</span>Overview</a>
+    <a class="nav-item" href="#products"><span>◫</span>Products</a>
+    <a class="nav-item" href="#analytics"><span>↗</span>Analytics</a>
+    <a class="nav-item" href="#"><span>⚙</span>Settings</a>
+  </nav>
+  <div class="sidebar-bottom"><div class="tip"><span class="tip-dot"></span><div><strong>Live workspace</strong><small>Data updates when the scraper runs.</small></div></div></div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <div><p class="eyebrow">PRICE INTELLIGENCE</p><h1>Market overview</h1></div>
+  <div class="top-actions">
+    <label class="search"><span>⌕</span><input id="global-search" type="search" placeholder="Search products..."></label>
+    <button class="icon-btn" type="button" aria-label="Notifications">♢</button>
+    <div class="avatar">BS</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div><h2>Good morning, Bittu</h2><p>Track collected product prices and spot changes at a glance.</p></div>
+  <div class="date-pill">Last dataset <strong id="last-updated">—</strong></div>
+</section>
+
+<section class="metrics">
+  <article class="metric-card"><div class="metric-top"><span>Products tracked</span><span class="metric-icon">◈</span></div><strong id="product-count">0</strong><small class="positive">● Collection ready</small></article>
+  <article class="metric-card"><div class="metric-top"><span>Average price</span><span class="metric-icon">$</span></div><strong id="average-price">$0.00</strong><small>Across collected products</small></article>
+  <article class="metric-card"><div class="metric-top"><span>Lowest price</span><span class="metric-icon">↓</span></div><strong id="lowest-price">$0.00</strong><small>Current collected minimum</small></article>
+  <article class="metric-card"><div class="metric-top"><span>Source</span><span class="metric-icon">↗</span></div><strong id="source">—</strong><small>Primary collection source</small></article>
+</section>
+
+<section class="content-grid" id="analytics">
+<article class="panel chart-panel">
+  <div class="panel-head"><div><h3>Price distribution</h3><p>Collected products by price range</p></div><span class="badge">Live dataset</span></div>
+  <div id="bars" class="bars"></div>
+</article>
+<article class="panel insight-panel">
+  <div class="panel-head"><div><h3>Collection health</h3><p>Quick status check</p></div></div>
+  <div class="health-score"><div class="score-ring"><span id="health-score">100%</span></div><div><strong>Healthy</strong><p id="health-text">All collected records passed basic validation.</p></div></div>
+  <div class="health-list"><div><span>Records loaded</span><strong id="health-records">0</strong></div><div><span>Missing prices</span><strong id="missing-prices">0</strong></div></div>
+</article>
+</section>
+
+<section class="panel table-panel" id="products">
+<div class="panel-head table-head">
+  <div><h3>Collected products</h3><p>Structured data extracted from the source</p></div>
+  <div class="table-actions"><select id="sort"><option value="name">Sort: Name</option><option value="high">Price: High to low</option><option value="low">Price: Low to high</option></select><button id="refresh" class="primary-btn">Refresh</button></div>
+</div>
+<div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>PRICE</th><th>CURRENCY</th><th>SOURCE</th><th>STATUS</th></tr></thead><tbody id="product-table"></tbody></table></div>
+<div id="empty" class="empty" hidden>No matching products found.</div>
+</section>
+<footer>PriceLens • Web Price Intelligence</footer>
+</main>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
